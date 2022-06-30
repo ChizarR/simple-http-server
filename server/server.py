@@ -1,6 +1,6 @@
+import socket
 from .request import Request, ParsedRequest
 from .router import Router
-import socket
 
 
 class Server:
