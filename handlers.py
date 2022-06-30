@@ -1,5 +1,4 @@
 from server.render import render
-from server.response import Response
 from server.types import StatusCode, ContentType, Charset
 
 
