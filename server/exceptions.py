@@ -1,5 +1,6 @@
 class RouteIsExistError(Exception):
-    pass
+    """Such route with such method exists"""
+
 
 class RouteIsNotExist(Exception):
-    pass
+    """Can't find such route"""

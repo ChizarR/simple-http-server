@@ -1,6 +1,8 @@
 from handlers import render_index, render_about
-from server.server import Server
+from server.response import Response
 from server.router import Router
+from server.server import Server
+from server.types import StatusCode, ContentType, Charset
 
 
 app = Server()

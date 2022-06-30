@@ -1,9 +1,4 @@
-from typing import NamedTuple
-
-
-class ParsedRequest(NamedTuple):
-    method: str
-    route: str
+from .types import ParsedRequest
 
 
 class Request:

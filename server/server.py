@@ -1,6 +1,8 @@
 import socket
-from .request import Request, ParsedRequest
+from .request import Request
+from .response import Response
 from .router import Router
+from .types import ParsedRequest, StatusCode, ContentType, Charset
 
 
 class Server:
@@ -37,12 +39,11 @@ class Server:
 
     def _create_response(self, req: ParsedRequest) -> bytes:
         """Create message with headers for respons"""
-        header = "HTTP/1.1 200 OK\nContent-Type: text/html; charser=utf-8\n\n"
         try:
-            res = f"{header}{self._routes[req.route][req.method]()}".encode()
+            res = self._routes[req.route][req.method]()
             return res
-        except:
-            headers = "HTTP/1.1 404 OK\nContent=Type: text/html; charset=utf-8\n\n"
-            res = f"{headers}Page not found".encode("utf-8")
-            return res
-            
+        except KeyError:
+            msg = "<h1>Page not Found 404</h1>"
+            res = Response(StatusCode.NOT_FOUND, ContentType.TEXT_HTML,
+                           Charset.UTF_8, msg)
+            return res.get()
