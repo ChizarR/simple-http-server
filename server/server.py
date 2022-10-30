@@ -47,3 +47,5 @@ class Server:
             res = Response(StatusCode.NOT_FOUND, ContentType.TEXT_HTML,
                            Charset.UTF_8, msg)
             return res.get()
+
+
